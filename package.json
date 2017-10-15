@@ -23,15 +23,12 @@
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "popper.js": "^1.12.5",
-    "scss-loader": "0.0.1",
     "tether": "^1.4.0",
     "vue": "^2.4.4",
-    "vue-awesome": "^2.3.3",
     "vue-functional-data-merge": "^1.0.6",
     "vue-resource": "^1.3.4",
     "vue-router": "^3.0.1",
-    "vue2-filters": "^0.2.2",
-    "vuestrap-base-components": "^0.8.10"
+    "vue2-filters": "^0.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
