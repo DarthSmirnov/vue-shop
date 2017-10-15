@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue-shop</title>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,900' rel='stylesheet'
+        type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 10]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="app">
+        <c-navbar></c-navbar>
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="col-12 col-md-3 sidebar-offcanvas">
+                    <c-sidebar></c-sidebar>
+                </div>
+                <div class="col-12 col-md-9">
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+        </div>
+        <c-footer></c-footer>
+    </div>
+    <script src="/dist/build.js"></script>
+</body>
+
+</html>

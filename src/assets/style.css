@@ -1,0 +1,29 @@
+html,
+body {
+    overflow-x: hidden;
+    /* Prevent scroll on narrow devices */
+}
+
+body {
+    padding-top: 70px;
+}
+.item-img {
+    max-height: 200px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.card {
+    margin-bottom: 15px;
+}
+
+.input-group .form-control {
+    border-color: #fff;
+}
+.fade-enter-active {
+    transition: opacity .5s
+}
+.fade-enter{
+    opacity: 0
+}
