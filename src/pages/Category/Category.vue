@@ -27,7 +27,7 @@
             <c-product-card :data="product" class="col-12 col-lg-4" v-for="product in products" :key="product.product_id">
             </c-product-card>
         </div>
-        <b-pagination size="md" class="justify-content-center" :total-rows="this.products.length" :per-page="sort.perPage">
+        <b-pagination size="md" class="justify-content-center" :total-rows="total" :per-page="sort.perPage">
         </b-pagination>
     </div>
 </template>
@@ -52,7 +52,8 @@
                     'perPage': 10
                 },
                 category: {},
-                products: {}
+                products: {},
+                total:0
             }
         },
         methods:{
@@ -60,16 +61,18 @@
                 console.log(this.$route);
                 let options = {
                     params: {
-                        _start:0,
-                        _limit:5
+                        id:this.$route.params.id,
+                        limit: this.sort.perPage,
+                        page: this.$route.query.page,
                     },
                     headers:{
                         'Content-Type':'application/json'
                     }
                 }
-                this.resource.get({id:this.$route.params.id}).then(response => {
+                this.resource.get(options.params).then(response => {
                     this.category = response.data.category;
                     this.products = response.data.products;
+                    this.total = response.data.total;
                 },err => {
                     throw err;
                 })
