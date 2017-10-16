@@ -27,12 +27,13 @@
             <c-product-card :data="product" class="col-12 col-lg-4" v-for="product in products" :key="product.product_id">
             </c-product-card>
         </div>
-        <b-pagination size="md" @change="getPage" align="center" :total-rows="total" :per-page="sort.limit">
+        <b-pagination size="md" @input="getPage" v-model="page" align="center" :total-rows="total" :per-page="sort.limit">
         </b-pagination>
     </div>
 </template>
 
 <script>
+    //TODO: доработать текущую страницу по роуту и после сортировки
     import Vue from 'vue'
     import ProductCard from '../../_partials/ProductCard.vue'
     Vue.component('c-product-card',ProductCard)
@@ -42,7 +43,7 @@
         computed:{
             resource(){
                 return this.$resource('/api/category/{id}');
-            },
+            }
         },
         data(){
             return{
@@ -54,6 +55,7 @@
                 category: {},
                 products: {},
                 total:0,
+                page:1
             }
         },
         methods:{
@@ -61,11 +63,12 @@
                 this.$router.push({ query: { page: page } });
             },
             getData(){
+                this.page = this.$route.query.page?this.$route.query.page : 1
                 let options = {
                     params: {
                         id: this.$route.params.id,
                         limit: this.sort.limit,
-                        page: this.$route.query.page?this.$route.query.page : 1,
+                        page: this.page,
                     },
                     headers:{
                         'Content-Type':'application/json'
