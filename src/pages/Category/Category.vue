@@ -14,11 +14,11 @@
             <div class="mr-auto"></div>
             <div class="category__per-page">
                 Выводить по:
-                <select class="custom-select" data-ngModel="sort.perPage">
-                    <option value="10">10 товаров</option>
-                    <option value="20">20 товаров</option>
-                    <option value="40">40 товаров</option>
-                    <option value="60">60 товаров</option>
+                <select class="custom-select" @change="getData" v-model="sort.limit">
+                    <option value="9" selected>9 товаров</option>
+                    <option value="18">18 товаров</option>
+                    <option value="36">36 товаров</option>
+                    <option value="48">48 товаров</option>
                 </select>
             </div>
         </nav>
@@ -27,7 +27,7 @@
             <c-product-card :data="product" class="col-12 col-lg-4" v-for="product in products" :key="product.product_id">
             </c-product-card>
         </div>
-        <b-pagination size="md" class="justify-content-center" :total-rows="total" :per-page="sort.perPage">
+        <b-pagination size="md" @change="getPage" align="center" :total-rows="total" :per-page="sort.limit">
         </b-pagination>
     </div>
 </template>
@@ -49,21 +49,23 @@
                 sort: {
                     'price': 'desc',
                     'name': 'desc',
-                    'perPage': 10
+                    'limit': 9
                 },
                 category: {},
                 products: {},
-                total:0
+                total:0,
             }
         },
         methods:{
+            getPage(page){
+                this.$router.push({ query: { page: page } });
+            },
             getData(){
-                console.log(this.$route);
                 let options = {
                     params: {
-                        id:this.$route.params.id,
-                        limit: this.sort.perPage,
-                        page: this.$route.query.page,
+                        id: this.$route.params.id,
+                        limit: this.sort.limit,
+                        page: this.$route.query.page?this.$route.query.page : 1,
                     },
                     headers:{
                         'Content-Type':'application/json'
