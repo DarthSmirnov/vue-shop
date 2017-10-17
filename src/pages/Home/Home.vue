@@ -1,9 +1,9 @@
 <template>
     <div>
         <b-carousel controls indicators :interval="5000" class="carousel carousel_home slide">
-            <b-carousel-slide img-src="http://lorempixel.com/900/450/abstract/1"></b-carousel-slide>
-            <b-carousel-slide img-src="http://lorempixel.com/900/450/abstract/2"></b-carousel-slide>
-            <b-carousel-slide img-src="http://lorempixel.com/900/450/abstract/3"></b-carousel-slide>
+            <b-carousel-slide img-src="http://via.placeholder.com/900x450"></b-carousel-slide>
+            <b-carousel-slide img-src="http://via.placeholder.com/900x450"></b-carousel-slide>
+            <b-carousel-slide img-src="http://via.placeholder.com/900x450"></b-carousel-slide>
         </b-carousel>
         <h2 class="text-dark font-weight-normal">Распродажа</h2>
         <div class="row">

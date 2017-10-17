@@ -98,9 +98,9 @@
     &__sort {
         button .fa {
         vertical-align: text-top;
-        &-sort-asc {
-            vertical-align: middle;
-        }
+            &-sort-asc {
+                vertical-align: middle;
+            }
         }
     }
 }

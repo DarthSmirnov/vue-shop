@@ -7,6 +7,7 @@ body {
 body {
     padding-top: 70px;
 }
+
 .item-img {
     max-height: 200px;
     display: block;
@@ -21,9 +22,11 @@ body {
 .input-group .form-control {
     border-color: #fff;
 }
+
 .fade-enter-active {
-    transition: opacity .5s
+    transition: opacity 0.6s
 }
-.fade-enter{
+
+.fade-enter {
     opacity: 0
 }

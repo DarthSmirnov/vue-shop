@@ -2,7 +2,7 @@
     <div>
         <div class="card text-center">
             <router-link class="item-img" :to="'/category/'+data.category_id+'/product/'+data.product_id">
-                <b-img class="card-img-top img-responsive" :src="'http://lorempixel.com/390/500/food/'+Math.ceil(data.product_id/100)" v-bind:alt="data.name">
+                <b-img class="card-img-top img-responsive" src="//via.placeholder.com/390x500" v-bind:alt="data.name">
             </router-link>
             <div class="card-body">
                 <h4 class="card-title">
