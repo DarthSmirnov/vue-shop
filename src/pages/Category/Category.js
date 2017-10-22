@@ -13,8 +13,8 @@ export default {
     data(){
         return{
             sort: {
-                'price': 'desc',
-                'name': 'desc',
+                price: 'desc',
+                name: 'desc',
             },
             category: {},
             products: {},
@@ -26,9 +26,18 @@ export default {
     methods:{
         sortBy(type){             
             this.sort[type] = this.sort[type] == 'desc' ? 'asc': 'desc';
+            this.$router.push({ query: { 
+                page: this.page,
+                name: this.sort.name,
+                price: this.sort.price
+            } });
         },
         getPage(page){
-            this.$router.push({ query: { page: page } });
+            this.$router.push({ query: { 
+                page: page,
+                name: this.sort.name,
+                price: this.sort.price
+            } });
         },
         checkPage(){
             return this.$route.query.page && !isNaN(this.$route.query.page)? +this.$route.query.page: 1;

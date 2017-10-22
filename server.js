@@ -126,9 +126,8 @@ app.get('/api/category', (req, res, next) => {
 
 // Ger category
 app.get('/api/category/:id', (req, res, next) => {
-    // console.log(req.query.sort);
     Category.findOne({ category_id: req.params.id }).exec((err, category) => {
-        Product.find({ category_id: req.params.id }).skip(req.query.limit*(req.query.page-1)).limit(parseInt(req.query.limit)).exec((err, products) => {
+        Product.find({ category_id: req.params.id }).skip(req.query.limit*(req.query.page-1)).sort(req.query.sort).limit(parseInt(req.query.limit)).exec((err, products) => {
             Product.count({ category_id: req.params.id }).exec((err, count) => {
                 return res.json({
                     total: count,
