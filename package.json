@@ -5,7 +5,7 @@
   "author": "DarthSmirnov",
   "private": true,
   "scripts": {
-    "server": "nodemon server.js -w",
+    "start": "nodemon server.js -w",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "watch": "cross-env NODE_ENV=production webpack --watch --progress --hide-modules"
