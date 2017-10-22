@@ -193,5 +193,5 @@ app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./dist/index.html"));
 })
 
-// Server listen  5000 port
-app.listen(5000, () => console.log("server run on 5000 port"))
+// Server listen  1337 port
+app.listen(process.env.PORT || 1337, () => console.log("server run on 1337 port"))
