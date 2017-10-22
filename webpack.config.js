@@ -41,8 +41,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /src/,
-                include: /node_modules/,
+                exclude: /node_modules/,
             },
             {
                 test: /\.(png|jpg|gif|svg|woff|woff2|ttf|eot)$/,
