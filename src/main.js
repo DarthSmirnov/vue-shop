@@ -2,11 +2,6 @@ import Vue from 'vue'
 import 'expose-loader?$!expose-loader?jQuery!jquery'
 import 'babel-polyfill'
 
-// import {bPagination, bCarousel, bCarouselSlide} from 'bootstrap-vue/lib/components'
-// Vue.component('b-pagination',bPagination);
-// Vue.component('b-carousel',bCarousel);
-// Vue.component('b-carousel-slide',bCarouselSlide);
-
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue/lib'

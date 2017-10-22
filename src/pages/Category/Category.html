@@ -1,0 +1,31 @@
+<div class="category">
+    <h2 class="text-dark font-weight-normal">{{category.name}}</h2>
+    <nav class="navbar navbar-light bg-light">
+        <div class="category__sort">
+            Сортировать по:
+            <button @click="sortBy('price')" class="btn btn-outline-secondary btn-sm">Цене
+                <i class="fa" v-bind:class="'fa-sort-'+sort.price"></i>
+            </button>
+            <button @click="sortBy('name')" class="btn btn-outline-secondary btn-sm">Наименованию
+                <i class="fa" v-bind:class="'fa-sort-'+sort.name"></i>
+            </button>
+        </div>
+        <div class="mr-auto"></div>
+        <div class="category__per-page">
+            Выводить по:
+            <select class="custom-select" @change="getData" v-model="limit">
+                <option value="9" selected>9 товаров</option>
+                <option value="18">18 товаров</option>
+                <option value="36">36 товаров</option>
+                <option value="48">48 товаров</option>
+            </select>
+        </div>
+    </nav>
+    <br>
+    <div class="row">
+        <c-product-card :data="product" class="col-12 col-lg-4" v-for="product in products" :key="product.product_id">
+        </c-product-card>
+    </div>
+    <b-pagination size="md" @input="getPage" v-model="page" align="center" :total-rows="total" :per-page="limit">
+    </b-pagination>
+</div>
