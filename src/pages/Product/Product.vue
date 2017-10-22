@@ -1,9 +1,3 @@
-<template>
-    <h1>Product</h1>
-</template>
-
-<script>
-    export default {
-        name: 'product'
-    }
-</script>
+<template src="./Product.html"></template>
+<script src="./Product.js"></script>
+<style lang="scss" src="./Product.scss" scoped></style>

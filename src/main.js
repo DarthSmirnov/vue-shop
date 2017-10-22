@@ -6,6 +6,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue/lib'
 import Vue2Filters from 'vue2-filters'
+
 Vue.use(Vue2Filters)
 Vue.use(BootstrapVue);
 Vue.use(VueResource);
@@ -33,18 +34,18 @@ import User from './pages/User/User.vue'
 const router = new VueRouter({
     routes: [{
         path: '/',
+        name:'home',
         component: Home,
         pathMatch: 'full'
     }, {
         path: '/category/:id(\\d+)',
-        component: Category,
-        children:[
-            {
-                path: '/product/:id(\\d+)',
-                component: Product
-            }
-        ]
-    }, {
+        component: Category
+    },
+    {
+        path: '/category/:id(\\d+)/product/:id(\\d+)',
+        component: Product
+    },
+    {
         path: '/cart',
         component: Cart
     }, {

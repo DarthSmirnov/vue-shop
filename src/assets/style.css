@@ -19,7 +19,7 @@ body {
     margin-bottom: 15px;
 }
 
-.input-group .form-control {
+.navbar .input-group .form-control,.footer .input-group .form-control {
     border-color: #fff;
 }
 

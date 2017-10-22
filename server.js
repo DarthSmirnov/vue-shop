@@ -140,7 +140,7 @@ app.get('/api/category/:id', (req, res, next) => {
 });
 
 // Ger product detail
-app.get('/api/product/:id', (req, res, next) => {
+app.get('/api/products/:id', (req, res, next) => {
     Product.findOne({ product_id: req.params.id }).exec((err, product) => {
         Country.findOne({ country_id: product.country_id }).exec((err, country) => {
             Characteristics.find({ product_id: product.product_id }).exec((err, characters) => {
@@ -152,16 +152,6 @@ app.get('/api/product/:id', (req, res, next) => {
             });
         });
     });
-});
-// Ger country
-app.get('/api/country/:id', (req, res, next) => {
-    Country.findOne({ country_id: req.params.id }).exec((err, country) => {
-        return res.json(country);
-    });
-});
-// Ger characters
-app.get('/api/characters/:id', (req, res, next) => {
-
 });
 // ---------------------USERS---------------------------------
 // Ger list users

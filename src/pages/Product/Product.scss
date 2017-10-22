@@ -1,0 +1,21 @@
+.product {
+    .tab-content {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-top: 0;
+    }
+    .breadcrumb{
+        margin-top: 43px;
+    }
+    &__img {
+        max-width: 100%;
+        height: auto;
+        max-height: 340px;
+        margin: 0 auto;
+        display: block;
+    }
+    &__tabs {
+        margin-top: 15px;
+    }
+}
+  

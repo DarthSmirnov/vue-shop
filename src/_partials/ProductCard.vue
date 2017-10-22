@@ -17,7 +17,7 @@
                     </button>
                 </div>
             </div>
-            <div class="card-footer text-muted">{{data.price| currency('₽', 0)}}</div>
+            <div class="card-footer text-muted">{{data.price| currency('₽ ', 0)}}</div>
         </div>
     </div>
 </template>
