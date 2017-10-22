@@ -123,9 +123,14 @@ app.get('/api/category', (req, res, next) => {
         return res.json(categories);
     })
 });
-
-// Ger category
+// Ger category info
 app.get('/api/category/:id', (req, res, next) => {
+    Category.findOne({ category_id: req.params.id }).exec((err, category) => {
+        return res.json(category);
+    })
+});
+// Ger products of category
+app.get('/api/category/:id/products', (req, res, next) => {
     Category.findOne({ category_id: req.params.id }).exec((err, category) => {
         Product.find({ category_id: req.params.id }).skip(req.query.limit*(req.query.page-1)).sort(req.query.sort).limit(parseInt(req.query.limit)).exec((err, products) => {
             Product.count({ category_id: req.params.id }).exec((err, count) => {

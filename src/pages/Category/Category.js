@@ -7,7 +7,7 @@ export default {
     name: 'category',
     computed:{
         resource(){
-            return this.$resource('/api/category/{id}');
+            return this.$resource('/api/category/{id}/products');
         }
     },
     data(){

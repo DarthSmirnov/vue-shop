@@ -24,8 +24,8 @@ export default {
                             text: 'Главная',
                             to: { name: 'home' },
                         }, {
-                            text: response.data.category.name,
-                            to: '/category/' + response.data.category.category_id,
+                            text: response.data.name,
+                            to: '/category/' + response.data.category_id,
                         }, {
                             text: this.product.name,
                             active: true

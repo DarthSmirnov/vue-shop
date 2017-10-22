@@ -36,23 +36,25 @@
         <div class="col-12">
             <b-tabs ref="tabs">
                 <b-tab title="Характеристики" active>
-                    <table class="table table-striped table-responsive">
-                        <tbody>
-                            <tr v-for="item in characters">
-                                <td>{{item.name}} </td>
-                                <td>{{item.val}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="product__tab-content">
+                        <table class="table table-striped table-responsive">
+                            <tbody>
+                                <tr v-for="item in characters">
+                                    <td>{{item.name}} </td>
+                                    <td>{{item.val}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </b-tab>
                 <b-tab title="Описание">
-                    {{product.description}}
+                    <div class="product__tab-content">{{product.description}}</div>
                 </b-tab>
                 <b-tab title="Оплата и доставка">
-                    Оплата и доставка
+                    <div class="product__tab-content">Оплата и доставка</div>
                 </b-tab>
                 <b-tab title="Отзывы">
-                    Отзывы
+                    <div class="product__tab-content">Отзывы</div>
                 </b-tab>
             </b-tabs>
         </div>
