@@ -1,17 +1,17 @@
 //TODO: доработать текущую страницу по роуту и после сортировки
 import Vue from 'vue'
 import ProductCard from '../../_partials/ProductCard.vue'
-Vue.component('c-product-card',ProductCard)
+Vue.component('c-product-card', ProductCard)
 
 export default {
     name: 'category',
-    computed:{
-        resource(){
+    computed: {
+        resource() {
             return this.$resource('/api/category/{id}/products');
         }
     },
-    data(){
-        return{
+    data() {
+        return {
             sort: {
                 price: 'desc',
                 name: 'desc',
@@ -23,31 +23,38 @@ export default {
             limit: 9
         }
     },
-    methods:{
-        sortBy(type){             
-            this.sort[type] = this.sort[type] == 'desc' ? 'asc': 'desc';
-            this.$router.push({ query: { 
-                page: this.page,
-                name: this.sort.name,
-                price: this.sort.price
-            } });
+    methods: {
+        sortBy(type) {
+            this.sort[type] = this.sort[type] == 'desc' ? 'asc' : 'desc';
+            this.$router.push({
+                query: {
+                    page: this.page,
+                    name: this.sort.name,
+                    price: this.sort.price
+                }
+            });
         },
-        getPage(page){
-            this.$router.push({ query: { 
-                page: page,
-                name: this.sort.name,
-                price: this.sort.price
-            } });
+        getPage(page) {
+            this.$router.push({
+                query: {
+                    page: page,
+                    name: this.sort.name,
+                    price: this.sort.price
+                }
+            });
+            $('html, body').animate({
+                scrollTop: $('#products').offset().top - 250
+            }, 1000);
         },
-        checkPage(){
-            return this.$route.query.page && !isNaN(this.$route.query.page)? +this.$route.query.page: 1;
+        checkPage() {
+            return this.$route.query.page && !isNaN(this.$route.query.page) ? +this.$route.query.page : 1;
         },
-        getData(){
+        getData() {
             let options = {
                 params: {
                     id: this.$route.params.id,
                     limit: this.limit,
-                    sort:this.sort,
+                    sort: this.sort,
                     page: this.checkPage(),
                 }
             }
@@ -56,12 +63,12 @@ export default {
                 this.products = response.data.products;
                 this.total = response.data.total;
                 this.page = this.checkPage();
-            },err => {
+            }, err => {
                 throw err;
             })
         }
     },
-    created(){
+    created() {
         this.getData();
     },
     watch: {
