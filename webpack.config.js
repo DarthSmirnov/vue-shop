@@ -57,7 +57,8 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            'bootstrap-vue$': 'bootstrap-vue/dist/bootstrap-vue.esm.js'
         }
     },
     devServer: {

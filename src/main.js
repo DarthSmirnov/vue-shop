@@ -4,7 +4,7 @@ import 'babel-polyfill'
 
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
-import BootstrapVue from 'bootstrap-vue/lib'
+import BootstrapVue from 'bootstrap-vue'
 import Vue2Filters from 'vue2-filters'
 
 Vue.use(Vue2Filters)
@@ -19,11 +19,11 @@ import './assets/style.css'
 
 // Partials
 import Navbar from './_partials/Navbar.vue'
-Vue.component('c-navbar',Navbar);
+Vue.component('c-navbar', Navbar);
 import Footer from './_partials/Footer.vue'
-Vue.component('c-footer',Footer);
+Vue.component('c-footer', Footer);
 import Sidebar from './_partials/Sidebar.vue'
-Vue.component('c-sidebar',Sidebar);
+Vue.component('c-sidebar', Sidebar);
 
 import Home from './pages/Home/Home.vue'
 import Category from './pages/Category/Category.vue'
@@ -33,25 +33,26 @@ import User from './pages/User/User.vue'
 
 const router = new VueRouter({
     routes: [{
-        path: '/',
-        name:'home',
-        component: Home,
-        pathMatch: 'full'
-    }, {
-        path: '/category/:id(\\d+)',
-        component: Category
-    },
-    {
-        path: '/category/:id(\\d+)/product/:id(\\d+)',
-        component: Product
-    },
-    {
-        path: '/cart',
-        component: Cart
-    }, {
-        path: '/user:id(\\d+)',
-        component: User
-    }]
+            path: '/',
+            name: 'home',
+            component: Home,
+            pathMatch: 'full'
+        }, {
+            path: '/category/:id(\\d+)',
+            component: Category
+        },
+        {
+            path: '/category/:id(\\d+)/product/:id(\\d+)',
+            component: Product
+        },
+        {
+            path: '/cart',
+            component: Cart
+        }, {
+            path: '/user:id(\\d+)',
+            component: User
+        }
+    ]
 });
 
 new Vue({
