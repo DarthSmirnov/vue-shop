@@ -9,8 +9,8 @@
                         </router-link>
                         <div class="d-inline-flex flex-column">
                             <a class="text-white" href="tel:+7 (926) 617-44-23">+7 (926) 617-44-23</a>
-                            <a class="text-white" href="mailto:soltecs.dev@gmail.com">
-                                <i class="fa fa-envelope" aria-hidden="true"></i> soltecs.dev@gmail.com
+                            <a class="text-white" href="mailto:email@example.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i> email@example.com
                             </a>
                         </div>
                         <div class="soc-network">
