@@ -19,10 +19,11 @@ app.use(morgan('dev'))
 
 // Mongo DB
 let mongoose = require('mongoose')
+mongoose.Promise = global.Promise;
+
 mongoose.connect('mongodb://smirnov:aqws1993@ds121534.mlab.com:21534/ng-shop', {
     useMongoClient: true
 })
-
 
 // User Schema
 let userSchema = new mongoose.Schema({
@@ -132,7 +133,7 @@ app.get('/api/category/:id', (req, res, next) => {
 // Ger products of category
 app.get('/api/category/:id/products', (req, res, next) => {
     Category.findOne({ category_id: req.params.id }).exec((err, category) => {
-        Product.find({ category_id: req.params.id }).skip(req.query.limit*(req.query.page-1)).sort(req.query.sort).limit(parseInt(req.query.limit)).exec((err, products) => {
+        Product.find({ category_id: req.params.id }).skip(req.query.limit * (req.query.page - 1)).sort(req.query.sort).limit(parseInt(req.query.limit)).exec((err, products) => {
             Product.count({ category_id: req.params.id }).exec((err, count) => {
                 return res.json({
                     total: count,
