@@ -1,4 +1,3 @@
-//TODO: доработать текущую страницу по роуту и после сортировки
 import Vue from 'vue'
 import ProductCard from '../../_partials/ProductCard.vue'
 Vue.component('c-product-card', ProductCard)
@@ -12,10 +11,13 @@ export default {
     },
     data() {
         return {
-            sort: {
-                price: 'desc',
-                name: 'desc',
-            },
+            sortId: 2,
+            sort: [
+                { price: 'asc' },
+                { price: 'desc' },
+                { name: 'asc' },
+                { name: 'desc' },
+            ],
             category: {},
             products: {},
             total: null,
@@ -24,24 +26,17 @@ export default {
         }
     },
     methods: {
-        sortBy(type) {
-            this.sort[type] = this.sort[type] == 'desc' ? 'asc' : 'desc';
+        updateRoute() {
             this.$router.push({
                 query: {
                     page: this.page,
-                    name: this.sort.name,
-                    price: this.sort.price
+                    limit: this.limit,
+                    sortId: this.sortId
                 }
             });
         },
         getPage(page) {
-            this.$router.push({
-                query: {
-                    page: page,
-                    name: this.sort.name,
-                    price: this.sort.price
-                }
-            });
+            this.updateRoute();
             $('html, body').animate({
                 scrollTop: $('#products').offset().top - 250
             }, 1000);
@@ -54,7 +49,7 @@ export default {
                 params: {
                     id: this.$route.params.id,
                     limit: this.limit,
-                    sort: this.sort,
+                    sort: this.sort[this.sortId],
                     page: this.checkPage(),
                 }
             }
@@ -63,6 +58,7 @@ export default {
                 this.products = response.data.products;
                 this.total = response.data.total;
                 this.page = this.checkPage();
+                this.updateRoute();
             }, err => {
                 throw err;
             })

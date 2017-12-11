@@ -4,12 +4,12 @@
     <nav class="navbar navbar-light bg-light">
         <div class="category__sort">
             Сортировать по:
-            <button @click="sortBy('price')" class="btn btn-outline-secondary btn-sm">Цене
-                <i class="fa" v-bind:class="'fa-sort-'+sort.price"></i>
-            </button>
-            <button @click="sortBy('name')" class="btn btn-outline-secondary btn-sm">Наименованию
-                <i class="fa" v-bind:class="'fa-sort-'+sort.name"></i>
-            </button>
+            <select class="custom-select" @change="getData" v-model="sortId">
+                <option value="0">Сначала дешевле</option>
+                <option value="1">Сначала дороже</option>
+                <option value="2" selected>От А до Я</option>
+                <option value="3">От Я до А</option>
+            </select>
         </div>
         <div class="mr-auto"></div>
         <div class="category__per-page">
