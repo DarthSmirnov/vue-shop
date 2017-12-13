@@ -17,22 +17,26 @@ app.use(bodyParser.json())
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
-
+// Connection
 const connect = require('./server/connection.js');
 
 // Models
-const characteristics = require('./server/characteristics.js');
-const country = require('./server/country.js');
-const user = require('./server/user.js');
-const category = require('./server/category.js');
-const product = require('./server/product.js');
+const Model = require('./server/models');
 
-// Inits
-characteristics(connect, app);
-country(connect, app);
-category(connect, app);
-product(connect, app);
-user(connect, app);
+// Routes
+const Routes = require('./server/routes');
+
+// Init models
+Model.Characteristics(connect, app);
+Model.Country(connect, app);
+Model.Category(connect, app);
+Model.Product(connect, app);
+Model.User(connect, app);
+
+// Init routes
+Routes.User(connect, app);
+Routes.Category(connect, app);
+Routes.Product(connect, app);
 
 app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./dist/index.html"));

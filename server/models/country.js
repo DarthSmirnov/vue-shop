@@ -5,5 +5,4 @@ module.exports = function(mongoose, app) {
         name: { type: String, require: true },
     })
     mongoose.model("Country", countrySchema, 'countries')
-    this.Country = mongoose.model("Country");
 }

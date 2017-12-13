@@ -7,5 +7,4 @@ module.exports = function(mongoose, app) {
         val: { type: String, require: true },
     })
     mongoose.model("Characteristics", characterSchema, 'characteristics')
-    let Characteristics = mongoose.model("Characteristics");
 }

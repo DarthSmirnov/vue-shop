@@ -1,16 +1,5 @@
 module.exports = function(mongoose, app) {
-    // User Schema
-    let userSchema = new mongoose.Schema({
-        first_name: { type: String, require: true },
-        last_name: { type: String, require: true },
-        email: { type: String, require: true },
-        editable: { type: Boolean, require: true }
-    })
-
-    mongoose.model("User", userSchema, 'users')
-    let User = mongoose.model("User");
-
-    // ---------------------USERS---------------------------------
+    let User = mongoose.model('User');
     // Ger list users
     app.get('/api/users', (req, res, next) => {
         User.find({}, (err, users) => {
