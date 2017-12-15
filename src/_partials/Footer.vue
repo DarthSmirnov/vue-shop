@@ -45,13 +45,13 @@
                 <div class="col-md-4 col-sm-12 col-xs-12 text-right">
                     <h6>Способы оплаты</h6>
                     <div class="d-inline-flex payments">
-                        <span data-toggle="tooltip" data-title="MasterCard">
+                        <span v-b-tooltip.hover="'MasterCard'">
                             <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
                         </span>
-                        <span data-toggle="tooltip" data-title="Visa">
+                        <span v-b-tooltip.hover="'Visa'">
                             <i class="fa fa-cc-visa" aria-hidden="true"></i>
                         </span>
-                        <span data-toggle="tooltip" data-title="Наличные">
+                        <span v-b-tooltip.hover="'Наличные'">
                             <i class="fa fa-money" aria-hidden="true"></i>
                         </span>
                     </div>
@@ -90,3 +90,4 @@
     font-size: 1.5em;
     }
 </style>
+
