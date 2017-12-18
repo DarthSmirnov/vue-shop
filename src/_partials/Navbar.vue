@@ -34,6 +34,11 @@
                         <span class="badge badge-info">0</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" title="Github repo" target="_blank" href="//github.com/DarthSmirnov/vue-shop">
+                        <i class="fa fa-github" aria-hidden="true"></i>
+                    </a>
+                </li>
             </ul>
         </b-collapse>
     </b-navbar>
