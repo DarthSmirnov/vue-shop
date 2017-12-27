@@ -37,7 +37,8 @@ const router = new VueRouter({
             name: 'home',
             component: Home,
             pathMatch: 'full'
-        }, {
+        },
+        {
             path: '/category/:id(\\d+)',
             component: Category
         },
@@ -48,7 +49,8 @@ const router = new VueRouter({
         {
             path: '/cart',
             component: Cart
-        }, {
+        },
+        {
             path: '/user:id(\\d+)',
             component: User
         }

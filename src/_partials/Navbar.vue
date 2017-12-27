@@ -23,16 +23,10 @@
             </form>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Доставка</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <router-link class="nav-link" to="/cart">
                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                         <span class="badge badge-info">0</span>
-                    </a>
+                    </router-link >
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" title="Github repo" target="_blank" href="//github.com/DarthSmirnov/vue-shop">
