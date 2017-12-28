@@ -9,7 +9,7 @@
                     <router-link class="text-dark" :to="'/category/'+data.category_id+'/product/'+data.product_id">{{data.name}}</router-link>
                 </h4>
                 <div class="btn-group" role="group">
-                    <button class="btn btn-primary btn-sm">
+                    <button class="btn btn-primary btn-sm" @click="addToCart(data)">
                         <i class="fa fa-cart-plus" aria-hidden="true"></i> Купить
                     </button>
                     <button class="btn btn-primary btn-sm">
@@ -26,10 +26,10 @@
 export default {
   name:'c-product-card',
   props:['data'],
-  computed:{
-      id(){
-          return this.data
-      }
+  methods: {
+    addToCart(item) {
+        this.$store.dispatch('addToCart', item);
+    },
   }
 }
 </script>

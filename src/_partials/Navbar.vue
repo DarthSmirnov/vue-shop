@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <router-link class="nav-link" to="/cart">
                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                        <span class="badge badge-info">0</span>
+                        <span class="badge badge-info">{{ basket.length }}</span>
                     </router-link >
                 </li>
                 <li class="nav-item">
@@ -46,7 +46,10 @@
 <script>
 export default {
     name: 'navbar',
-    methods:{
+    computed: {
+        basket() { return this.$store.getters.basket; }
+    },
+    methods: {
         toggleSidebar(){
             $('.row-offcanvas').toggleClass('active')
         }
