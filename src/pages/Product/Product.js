@@ -1,45 +1,48 @@
 export default {
     name: 'product',
-    computed:{
-        resource(){
+    computed: {
+        resource() {
             return this.$resource('/api/products/{id}');
         }
     },
-    data(){
-        return{
+    data() {
+        return {
+            quantity: 1,
             breadcrumbs: [],
             product: {},
             country: {},
             characters: []
         }
     },
-    methods:{
-        getData(){
+    methods: {
+        addToCart(item, n, event) {
+            n = +n
+            this.$store.dispatch('addToCart', { item, n, event })
+        },
+        getData() {
             // @TODO переработать забор катеории и списка продуктво в сервака
-            this.resource.get({id:this.$route.params.id}).then(response => {
+            this.resource.get({ id: this.$route.params.id }).then(response => {
                 this.product = response.data.product;
-                this.$http.get('/api/category/'+this.product.category_id).then(response => {
-                    this.breadcrumbs.push(
-                        {
-                            text: 'Главная',
-                            to: { name: 'home' },
-                        }, {
-                            text: response.data.name,
-                            to: '/category/' + response.data.category_id,
-                        }, {
-                            text: this.product.name,
-                            active: true
-                        }
-                    );
+                this.$http.get('/api/category/' + this.product.category_id).then(response => {
+                    this.breadcrumbs.push({
+                        text: 'Главная',
+                        to: { name: 'home' },
+                    }, {
+                        text: response.data.name,
+                        to: '/category/' + response.data.category_id,
+                    }, {
+                        text: this.product.name,
+                        active: true
+                    });
                 });
                 this.country = response.data.country;
                 this.characters = response.data.characters;
-            },err => {
+            }, err => {
                 throw err;
             })
         }
     },
-    created(){
+    created() {
         this.getData();
     },
     watch: {

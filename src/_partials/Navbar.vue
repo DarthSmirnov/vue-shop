@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <router-link class="nav-link" to="/cart">
                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                        <span class="badge badge-info">{{ basket.length }}</span>
+                        <span class="badge badge-info">{{ basket }}</span>
                     </router-link >
                 </li>
                 <li class="nav-item">
@@ -47,7 +47,10 @@
 export default {
     name: 'navbar',
     computed: {
-        basket() { return this.$store.getters.basket; }
+        basket() {
+            let cart = this.$store.getters.basket;
+            return cart.reduce((sum, item) => sum + item.quantity, 0)
+        }
     },
     methods: {
         toggleSidebar(){

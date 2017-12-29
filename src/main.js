@@ -7,13 +7,11 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import Vue2Filters from 'vue2-filters'
-import VueSession from 'vue-session'
 
 Vue.use(Vue2Filters)
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
 Vue.use(VueRouter)
-Vue.use(VueSession)
 
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.css'

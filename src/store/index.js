@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueCookie from 'vue-cookie'
-import VueSession from 'vue-session'
 
 Vue.use(Vuex)
 Vue.use(VueCookie)
-Vue.use(VueSession)
+
 export default new Vuex.Store({
     state: {
         sales: [],
@@ -21,15 +20,29 @@ export default new Vuex.Store({
         },
         REMOVE_FROM_CART(state, index) {
             state.basket.splice(index, 1)
+
             if (state.basket.length === 0)
                 VueCookie.delete('basket')
             else
-                VueCookie.set('basket', state.basket, 1)
+                VueCookie.set('basket', JSON.stringify(state.basket), 1)
         },
-        ADD_TO_CART(state, item) {
-            delete item.description
-            state.basket.push(item)
-            console.log(JSON.stringify(state.basket))
+        ADD_TO_CART(state, params) {
+            let record = state.basket.find(p => p.product_id === params.item.product_id)
+
+            if (!record) {
+                delete params.item.description
+                params.item.quantity = +params.n
+                state.basket.push(params.item)
+            } else {
+                let cart = state.basket.map((p) => {
+                    if (p.product_id === params.item.product_id) {
+                        p.quantity = p.quantity + params.n
+                    }
+                    return p
+                })
+                state.basket = cart;
+            }
+            console.log(params.event);
             VueCookie.set('basket', JSON.stringify(state.basket), 1)
         },
     },
@@ -41,9 +54,7 @@ export default new Vuex.Store({
                 throw err
             })
         },
-        addToCart(context, item) {
-            context.commit('ADD_TO_CART', item)
-        },
+        addToCart(context, params) { context.commit('ADD_TO_CART', params) },
         removeFromCart(context, index) { context.commit('REMOVE_FROM_CART', index); },
     },
 });
