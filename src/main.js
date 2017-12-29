@@ -33,7 +33,6 @@ import Home from './pages/Home/Home.vue'
 import Category from './pages/Category/Category.vue'
 import Product from './pages/Product/Product.vue'
 import Cart from './pages/Cart/Cart.vue'
-import User from './pages/User/User.vue'
 
 const router = new VueRouter({
     routes: [{
@@ -53,10 +52,6 @@ const router = new VueRouter({
         {
             path: '/cart',
             component: Cart
-        },
-        {
-            path: '/user:id(\\d+)',
-            component: User
         }
     ]
 });
