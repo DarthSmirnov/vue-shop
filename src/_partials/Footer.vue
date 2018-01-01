@@ -8,7 +8,7 @@
                             <img src="../../src/assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> Vue-Shop
                         </router-link>
                         <div class="d-inline-flex flex-column">
-                            <a class="text-white" href="tel:+7 (926) 617-44-23">+7 (926) 617-44-23</a>
+                            <a class="text-white" href="tel:+7 (978) 000-00-00">+7 (978) 000-00-00</a>
                             <a class="text-white" href="mailto:email@example.com">
                                 <i class="fa fa-envelope" aria-hidden="true"></i> email@example.com
                             </a>
@@ -32,7 +32,7 @@
                         <br>в курсе наших спец. предложений</p>
                     <form class="form-inline">
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">
+                            <span class="input-group-addon">
                                 <i class="fa fa-envelope"></i>
                             </span>
                             <input type="text" class="form-control" placeholder="email@example.com">

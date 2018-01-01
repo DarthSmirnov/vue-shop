@@ -12,6 +12,11 @@
         <b-collapse is-nav id="navbarsExampleDefault">
             <div class="mr-auto"></div>
             <form class="form-inline my-2 my-lg-0">
+                 <TypeAhead
+                    :limit="10"
+                    src="/api/products/search?keyword=:keyword"
+                    :getResponse="getResponse"
+                    ></TypeAhead>
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
                     <div class="input-group-btn">
@@ -55,6 +60,9 @@ export default {
     methods: {
         toggleSidebar(){
             $('.row-offcanvas').toggleClass('active')
+        },
+        getResponse: function (response) {
+            return response.data.items
         }
     }
 }

@@ -42,7 +42,6 @@ export default new Vuex.Store({
                 })
                 state.basket = cart;
             }
-            console.log(params.event);
             VueCookie.set('basket', JSON.stringify(state.basket), 1)
         },
     },

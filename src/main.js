@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import Vue2Filters from 'vue2-filters'
+import TypeAhead from 'vue2-typeahead' 
 
 Vue.use(Vue2Filters)
 Vue.use(BootstrapVue)
@@ -14,7 +15,7 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 
 import store from './store';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/style.css'
