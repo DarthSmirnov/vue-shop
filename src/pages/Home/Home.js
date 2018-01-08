@@ -5,10 +5,22 @@ Vue.component('c-product-card', ProductCard);
 
 export default {
     name: 'home',
-    computed: {
-        sales() { return this.$store.getters.sales; },
+    data(){
+        return{
+            currentPage: 3,
+            sales:[]
+        }
     },
-    created() {
-        this.$store.dispatch('fetchSales')
+    methods:{
+        getSales(){
+            this.$http.get('/api/sale').then(response => {
+                this.sales = response.data
+        },err => {
+                throw err;
+            })
+        }
+    },
+    created(){
+        this.getSales();
     }
 }

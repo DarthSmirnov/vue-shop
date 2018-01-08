@@ -3,14 +3,15 @@ module.exports = function(mongoose, app) {
     let Product = mongoose.model('Product');
     let Country = mongoose.model('Country');
     let Characteristics = mongoose.model('Characteristics');
-    // Ger sales
+
+    // Get sales
     app.get('/api/sale', (req, res, next) => {
         Product.find({ sale: true }).sort('product_id').limit(6).exec((err, sales) => {
             return res.json(sales);
         })
     });
 
-    // Ger products of category
+    // Get products of category
     app.get('/api/category/:id/products', (req, res, next) => {
         Category.findOne({ category_id: req.params.id }).exec((err, category) => {
             Product.find({ category_id: req.params.id })
@@ -29,7 +30,7 @@ module.exports = function(mongoose, app) {
         })
     });
 
-    // Ger product detail
+    // Get product detail
     app.get('/api/products/:id', (req, res, next) => {
         Product.findOne({ product_id: req.params.id }).exec((err, product) => {
             Country.findOne({ country_id: product.country_id }).exec((err, country) => {
@@ -43,4 +44,12 @@ module.exports = function(mongoose, app) {
             });
         });
     });
+
+    // Get products search result
+    app.get('/api/search', (req, res, next) => {
+        console.log(req.query.keyword);
+        Product.find({ name: '/'+req.query.keyword+'/i' }).sort('product_id').limit(10).exec((err, search) => {
+            return res.json(search);
+        })
+    })
 }

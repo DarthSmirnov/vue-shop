@@ -11,21 +11,19 @@
         </b-nav-toggle>
         <b-collapse is-nav id="navbarsExampleDefault">
             <div class="mr-auto"></div>
-            <form class="form-inline my-2 my-lg-0">
-                 <TypeAhead
+            <div class="my-2 my-lg-0">
+                <TypeAhead
                     :limit="10"
-                    src="/api/products/search?keyword=:keyword"
-                    :getResponse="getResponse"
+                    placeholder="Поиск"
+                    classes="typeahead"
+                    src="/api/search?keyword=:keyword"
+                    :getResponse="search"
+                    :onHit="onHit"
+                    :fetch="fetch"
+                    :render="render"
+                    :highlighting="highlighting"
                     ></TypeAhead>
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-outline-info my-sm-0" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link class="nav-link" to="/cart">
@@ -47,8 +45,14 @@
     .navbar {
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
     }
+    .typeahead .form-control{
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+    }
 </style>
 <script>
+import TypeAhead from 'vue2-typeahead' 
+
 export default {
     name: 'navbar',
     computed: {
@@ -61,9 +65,29 @@ export default {
         toggleSidebar(){
             $('.row-offcanvas').toggleClass('active')
         },
-        getResponse: function (response) {
-            return response.data.items
+        search(response) {
+            return response.body
+        },
+        render: function (items, vue) {
+            console.log(vue.query, items);
+            let newItem = [vue.query, ...items]
+            return newItem
+        },
+        highlighting: function (item, vue) {
+            console.log(item, vue.query);
+            return item.toString().replace(vue.query, `<b>${vue.query}</b>`)
+        },
+        onHit(item, vue, index) {
+            console.log(index)
+            console.log(vue.data)
+            vue.query = item
+        },
+        fetch(url) {
+            return this.$http.get(url)
         }
+    },
+    components: {
+        TypeAhead
     }
 }
 </script>

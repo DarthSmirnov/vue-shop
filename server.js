@@ -39,7 +39,7 @@ Routes.Category(connect, app);
 Routes.Product(connect, app);
 
 app.all("*", (req, res, next) => {
-    res.sendFile(path.resolve("./dist/index.html"));
+    res.sendFile(path.resolve("./index.html"));
 })
 
 // Server listen  1337 port

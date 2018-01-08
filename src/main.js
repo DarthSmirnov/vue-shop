@@ -7,7 +7,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 import Vue2Filters from 'vue2-filters'
-import TypeAhead from 'vue2-typeahead' 
+
 
 Vue.use(Vue2Filters)
 Vue.use(BootstrapVue)

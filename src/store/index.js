@@ -7,17 +7,12 @@ Vue.use(VueCookie)
 
 export default new Vuex.Store({
     state: {
-        sales: [],
         basket: VueCookie.get('basket') ? JSON.parse(VueCookie.get('basket')) : []
     },
     getters: {
-        sales: state => state.sales,
         basket: state => state.basket,
     },
     mutations: {
-        SET_SALES(state, data) {
-            state.sales = data
-        },
         REMOVE_FROM_CART(state, index) {
             state.basket.splice(index, 1)
 
@@ -46,13 +41,6 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        fetchSales({ commit }) {
-            Vue.http.get('/api/sale').then(response => {
-                commit('SET_SALES', response.data)
-            }, err => {
-                throw err
-            })
-        },
         addToCart(context, params) { context.commit('ADD_TO_CART', params) },
         removeFromCart(context, index) { context.commit('REMOVE_FROM_CART', index); },
     },
