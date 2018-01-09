@@ -44,12 +44,4 @@ module.exports = function(mongoose, app) {
             });
         });
     });
-
-    // Get products search result
-    app.get('/api/search', (req, res, next) => {
-        console.log(req.query.keyword);
-        Product.find({ name: '/'+req.query.keyword+'/i' }).sort('product_id').limit(10).exec((err, search) => {
-            return res.json(search);
-        })
-    })
 }

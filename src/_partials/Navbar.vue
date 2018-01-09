@@ -11,19 +11,6 @@
         </b-nav-toggle>
         <b-collapse is-nav id="navbarsExampleDefault">
             <div class="mr-auto"></div>
-            <div class="my-2 my-lg-0">
-                <TypeAhead
-                    :limit="10"
-                    placeholder="Поиск"
-                    classes="typeahead"
-                    src="/api/search?keyword=:keyword"
-                    :getResponse="search"
-                    :onHit="onHit"
-                    :fetch="fetch"
-                    :render="render"
-                    :highlighting="highlighting"
-                    ></TypeAhead>
-            </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link class="nav-link" to="/cart">
@@ -65,29 +52,6 @@ export default {
         toggleSidebar(){
             $('.row-offcanvas').toggleClass('active')
         },
-        search(response) {
-            return response.body
-        },
-        render: function (items, vue) {
-            console.log(vue.query, items);
-            let newItem = [vue.query, ...items]
-            return newItem
-        },
-        highlighting: function (item, vue) {
-            console.log(item, vue.query);
-            return item.toString().replace(vue.query, `<b>${vue.query}</b>`)
-        },
-        onHit(item, vue, index) {
-            console.log(index)
-            console.log(vue.data)
-            vue.query = item
-        },
-        fetch(url) {
-            return this.$http.get(url)
-        }
-    },
-    components: {
-        TypeAhead
     }
 }
 </script>
