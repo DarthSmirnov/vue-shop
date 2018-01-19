@@ -38,6 +38,8 @@ Routes.User(connect, app);
 Routes.Category(connect, app);
 Routes.Product(connect, app);
 
+const nodemailer = require('nodemailer');
+
 app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./index.html"));
 })

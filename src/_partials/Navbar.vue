@@ -37,9 +37,7 @@
         border-bottom-right-radius: .25rem;
     }
 </style>
-<script>
-import TypeAhead from 'vue2-typeahead' 
-
+<script> 
 export default {
     name: 'navbar',
     computed: {
