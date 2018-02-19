@@ -61,33 +61,46 @@
 </template>
 
 <script>
+import VueCookie from "vue-cookie";
 export default {
-    data() {
-        return {
-            form: {
-                email: '',
-                name: '',
-                adres:''
-            },
-            formValidated: false
-        }
+  data() {
+    return {
+      form: {
+        email: "",
+        name: "",
+        adres: ""
+      },
+      formValidated: false
+    };
+  },
+  name: "cart",
+  computed: {
+    basket() {
+      return this.$store.getters.basket;
     },
-    name: 'cart',
-    computed: {
-        basket() { return this.$store.getters.basket; },
-        total() {
-            return this.basket.reduce((total, cur) => total + cur.price*cur.quantity, 0);
-        },
+    total() {
+      return this.basket.reduce(
+        (total, cur) => total + cur.price * cur.quantity,
+        0
+      );
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      this.formValidated = true;
+      e.preventDefault();
+      if (e.target.checkValidity()) {
+        this.$http
+          .post("/cart/order", { form: this.form, basket: this.basket })
+          .then(response => {
+            alert(response.body.message);
+            this.$store.dispatch("clearCart");
+          });
+      }
     },
-    methods: {
-        onSubmit (evt) {
-            this.formValidated = true;
-            evt.preventDefault();
-            console.log(JSON.stringify(this.form));
-        },
-        removeFromCart(index) {
-            this.$store.dispatch('removeFromCart', index);
-        },
-    },
-}
+    removeFromCart(index) {
+      this.$store.dispatch("removeFromCart", index);
+    }
+  }
+};
 </script>

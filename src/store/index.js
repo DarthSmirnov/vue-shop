@@ -13,6 +13,10 @@ export default new Vuex.Store({
         basket: state => state.basket,
     },
     mutations: {
+        CLEAR_CART(state) {
+            VueCookie.delete('basket')
+            state.basket = []
+        },
         REMOVE_FROM_CART(state, index) {
             state.basket.splice(index, 1)
 
@@ -41,7 +45,14 @@ export default new Vuex.Store({
         },
     },
     actions: {
-        addToCart(context, params) { context.commit('ADD_TO_CART', params) },
-        removeFromCart(context, index) { context.commit('REMOVE_FROM_CART', index); },
+        addToCart(context, params) {
+            context.commit('ADD_TO_CART', params)
+        },
+        removeFromCart(context, index) {
+            context.commit('REMOVE_FROM_CART', index);
+        },
+        clearCart(context) {
+            context.commit('CLEAR_CART');
+        },
     },
 });

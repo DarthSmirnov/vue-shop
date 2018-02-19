@@ -32,11 +32,13 @@
                         <br>в курсе наших спец. предложений</p>
                     <form class="form-inline">
                         <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="fa fa-envelope"></i>
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
                             </span>
                             <input type="text" class="form-control" placeholder="email@example.com">
-                            <div class="input-group-btn">
+                            <div class="input-group-append">
                                 <button type="submit" class="btn btn-primary">Подписаться</button>
                             </div>
                         </div>
@@ -68,26 +70,26 @@
     </footer>
 </template>
 <style lang="scss" scoped>
-    footer {
-        padding: 15px 0;
-        margin-top: 15px;
-    }
+footer {
+  padding: 15px 0;
+  margin-top: 15px;
+}
 
-    .soc-network {
-    margin-top: 10px;
-    }
+.soc-network {
+  margin-top: 10px;
+}
 
-    .soc-network a {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    line-height: 30px;
-    margin-right: 10px;
-    }
+.soc-network a {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  margin-right: 10px;
+}
 
-    .payments span {
-    margin-right: 10px;
-    font-size: 1.5em;
-    }
+.payments span {
+  margin-right: 10px;
+  font-size: 1.5em;
+}
 </style>
 
