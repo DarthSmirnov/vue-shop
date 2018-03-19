@@ -18,14 +18,14 @@
                 <li v-if="product.availible > 0">Наличие: Есть в наличии</li>
                 <li v-if="product.availible === 0">Наличие: Нет в наличии</li>
             </ul>
-            <div class="input-group w-50">
+            <b-input-group class="input-group w-50">
                 <input type="number" v-model="quantity" class="form-control" min="1" value="1">
-                <span class="input-group-btn">
+                <b-input-group-append>
                     <button class="btn btn-primary" type="button" @click="addToCart(product, quantity, $event)">
                         <i class="fa fa-cart-plus" aria-hidden="true"></i> Купить
                     </button>
-                </span>
-            </div>
+                </b-input-group-append>
+            </b-input-group>
         </div>
     </div>
     <div class="row product__tabs">
