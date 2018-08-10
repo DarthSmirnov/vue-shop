@@ -2,7 +2,7 @@
     <b-breadcrumb v-if="breadcrumbs.length" :items="breadcrumbs" />
     <div class="row">
         <div class="col-12 col-md-6">
-            <img class="img-fluid product__img" src="//via.placeholder.com/390x500" alt="{{product.name}}">
+            <img class="img-fluid product__img" src="//via.placeholder.com/390x500" :alt="product.name">
         </div>
         <div class="col-12 col-md-6">
             <h2 class="text-dark font-weight-normal">{{product.name}}</h2>

@@ -2,7 +2,7 @@
     <div>
         <div class="card text-center">
             <router-link class="item-img" :to="'/category/'+data.category_id+'/product/'+data.product_id">
-                <b-img class="card-img-top img-responsive" src="//via.placeholder.com/390x500" v-bind:alt="data.name">
+                <b-img class="card-img-top img-responsive" src="//via.placeholder.com/390x500" v-bind:alt="data.name" />
             </router-link>
             <div class="card-body">
                 <h4 class="card-title">
@@ -18,17 +18,17 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-  name:'c-product-card',
-  props:['data'],
+  name: "c-product-card",
+  props: ["data"],
   methods: {
     addToCart(item, n, e) {
-        n = +n
-        this.$store.dispatch('addToCart', { item, n, event })
-    },
+      n = +n;
+      this.$store.dispatch("addToCart", { item, n, event });
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
