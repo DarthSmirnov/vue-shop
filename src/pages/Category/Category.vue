@@ -1,5 +1,5 @@
 <template src="./Category.html"></template>
 
-<script src="./Category.js"></script>
+<script lang="ts" src="./Category.ts"></script>
 
 <style lang="scss" src="./Category.scss" scoped></style>

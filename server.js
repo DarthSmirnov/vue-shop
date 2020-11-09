@@ -1,12 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-var */
+/* eslint-disable prettier/prettier */
+require('dotenv').config();
+
 // Express
 const express = require('express')
 const app = express()
-const random = require('generate-random-data')
+const cors = require('cors');
 
-const path = require('path')
 
 // Static folder
-app.use(express.static(__dirname))
+app.use(cors())
 
 // Body Parser
 const bodyParser = require('body-parser')
@@ -51,8 +55,8 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-app.post('/cart/order', (req, res, next) => {
-    let params = req.body
+app.post('/api/cart/order', (req, res) => {
+    const params = req.body
     let orderText = 'Ваш заказ на сумму <strong>' + params.basket.reduce(
         (total, cur) => total + cur.price * cur.quantity,
         0
@@ -76,9 +80,4 @@ app.post('/cart/order', (req, res, next) => {
     });
 });
 
-app.all("*", (req, res, next) => {
-    res.sendFile(path.resolve("./index.html"));
-})
-
-// Server listen  1337 port
-app.listen(process.env.PORT || 1337, () => console.log("server run on 1337 port"))
+app.listen(process.env.API_PORT || 1337, () => console.log(`server run on ${process.env.API_PORT} port`))

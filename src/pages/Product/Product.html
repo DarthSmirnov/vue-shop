@@ -1,5 +1,9 @@
 <div class="product">
-    <b-breadcrumb v-if="breadcrumbs.length" :items="breadcrumbs" />
+    <b-breadcrumb>
+        <b-breadcrumb-item to="/">Главная</b-breadcrumb-item>
+        <b-breadcrumb-item :to="`/category/${category.category_id}`">{{category.name}}</b-breadcrumb-item>
+        <b-breadcrumb-item active>{{product.name}}</b-breadcrumb-item>
+    </b-breadcrumb>
     <div class="row">
         <div class="col-12 col-md-6">
             <img class="img-fluid product__img" src="//via.placeholder.com/390x500" :alt="product.name">
