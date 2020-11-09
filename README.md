@@ -1,4 +1,4 @@
-# vue2ts
+# vue-shop
 
 ## Project setup
 
