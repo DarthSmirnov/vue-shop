@@ -1,7 +1,10 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
 // Mongo DB
-let mongoose = require('mongoose')
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://smirnov:aqws1993@ds121534.mlab.com:21534/ng-shop')
+mongoose.connect(
+  'mongodb+srv://smirnov:aqws1993@cluster0.eazsh.mongodb.net/ng-shop?retryWrites=true&w=majority'
+);
 
 module.exports = mongoose;
